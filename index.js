@@ -104,6 +104,19 @@ const addEmployee = () => {
         },
         {
             type: 'input',
+            name: 'id',
+            message: 'Please assign an ID to the employee',
+            validate: nameInput => {
+                if (isNaN(nameInput)) {
+                    console.log('Please enter an ID number for the employee')
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        },
+        {
+            type: 'input',
             name: 'email',
             message: 'Please enter employee email',
             validate: email => {
