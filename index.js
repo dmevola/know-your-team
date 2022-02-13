@@ -1,6 +1,17 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+//import classes
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
+
+//generate html
+const generateHTML = require("./src/generateHTML")
+
+//create empty array for info
+const teamArray = [];
+
 //Manager prompts
 
 const addManager = () => {
@@ -28,6 +39,20 @@ const addManager = () => {
                     return false;
                 } else {
                     return true;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Please enter the manager's email.",
+            validate: email => {
+                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+                if (valid) {
+                    return true;
+                } else {
+                    console.log ('Please enter an email!')
+                    return false; 
                 }
             }
         },
